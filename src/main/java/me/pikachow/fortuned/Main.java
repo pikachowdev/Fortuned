@@ -8,7 +8,7 @@ public final class Main extends JavaPlugin {
     @Override
     public void onEnable() {
         getServer().getPluginManager().registerEvents(new BreakBlock(), this);
-        getServer().getPluginCommand("discord").setExecutor(new DiscordCommand(this));
+        getServer().getPluginCommand("discord").setExecutor(new DiscordCommand());
     }
 
 
