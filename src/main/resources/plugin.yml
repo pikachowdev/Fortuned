@@ -3,4 +3,8 @@ version: ${project.version}
 main: me.pikachow.fortuned.Main
 api-version: 1.16
 authors: [ pikachow ]
-description: Brings the updates to the fortune enchantment into previous versions of the game! 
+description: Brings the updates to the fortune enchantment into previous versions of the game!
+commands:
+  discord:
+    description: Sends the player a discord link!
+    usage: /<command>

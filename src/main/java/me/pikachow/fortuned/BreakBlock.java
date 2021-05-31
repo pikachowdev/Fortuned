@@ -18,76 +18,84 @@ public class BreakBlock implements Listener {
         Block blockBroken = e.getBlock();
         if (blockBroken.getType() == Material.IRON_ORE) {
             Player playerMining = e.getPlayer();
-            ItemStack heldItem = playerMining.getInventory().getItemInMainHand();
-            System.out.println(heldItem);
-            if (heldItem.getType().equals(Material.IRON_PICKAXE)) {
-                if (heldItem.getItemMeta().hasEnchant(Enchantment.LOOT_BONUS_BLOCKS)) {
-                    e.setDropItems(false);
+            if (playerMining.hasPermission("fortuned.mine.iron")) {
+                ItemStack heldItem = playerMining.getInventory().getItemInMainHand();
+                System.out.println(heldItem);
+                if (heldItem.getType().equals(Material.IRON_PICKAXE)) {
+                    if (heldItem.getItemMeta().hasEnchant(Enchantment.LOOT_BONUS_BLOCKS)) {
+                        e.setDropItems(false);
+                        blockBroken.setType(Material.AIR);
+                        ItemStack iron = new ItemStack(Material.IRON_INGOT, (int) (Math.random() * 4) + 1);
+                        blockBroken.getWorld().dropItemNaturally(blockBroken.getLocation(), iron);
+                    }
+                } else if (heldItem.getType().equals(Material.GOLDEN_PICKAXE)) {
+                    if (heldItem.getItemMeta().hasEnchant(Enchantment.LOOT_BONUS_BLOCKS)) {
+                        e.setDropItems(false);
+                        blockBroken.setType(Material.AIR);
+                        ItemStack iron = new ItemStack(Material.IRON_INGOT, (int) (Math.random() * 4) + 1);
+                        blockBroken.getWorld().dropItemNaturally(blockBroken.getLocation(), iron);
+                    }
+                } else if (heldItem.getType().equals(Material.DIAMOND_PICKAXE)) {
+                    if (heldItem.getItemMeta().hasEnchant(Enchantment.LOOT_BONUS_BLOCKS)) {
+                        e.setDropItems(false);
+                        blockBroken.setType(Material.AIR);
+                        ItemStack iron = new ItemStack(Material.IRON_INGOT, (int) (Math.random() * 4) + 1);
+                        blockBroken.getWorld().dropItemNaturally(blockBroken.getLocation(), iron);
+                    }
+                } else if (heldItem.getType().equals(Material.NETHERITE_PICKAXE)) {
+                    if (heldItem.getItemMeta().hasEnchant(Enchantment.LOOT_BONUS_BLOCKS)) {
+                        e.setDropItems(false);
+                        blockBroken.setType(Material.AIR);
+                        ItemStack iron = new ItemStack(Material.IRON_INGOT, (int) (Math.random() * 4) + 1);
+                        blockBroken.getWorld().dropItemNaturally(blockBroken.getLocation(), iron);
+                    }
+                } else if (heldItem.getType().equals(Material.STONE_PICKAXE)) {
+                    if (heldItem.getItemMeta().hasEnchant(Enchantment.LOOT_BONUS_BLOCKS)) {
+                        e.setDropItems(false);
+                        blockBroken.setType(Material.AIR);
+                        ItemStack iron = new ItemStack(Material.IRON_INGOT, (int) (Math.random() * 4) + 1);
+                        blockBroken.getWorld().dropItemNaturally(blockBroken.getLocation(), iron);
+                    }
+                } else {
                     blockBroken.setType(Material.AIR);
-                    ItemStack iron = new ItemStack(Material.IRON_INGOT, (int) (Math.random() * 4) + 1);
-                    blockBroken.getWorld().dropItemNaturally(blockBroken.getLocation(), iron);
-                }
-            } else if (heldItem.getType().equals(Material.GOLDEN_PICKAXE)) {
-                if (heldItem.getItemMeta().hasEnchant(Enchantment.LOOT_BONUS_BLOCKS)) {
-                    e.setDropItems(false);
-                    blockBroken.setType(Material.AIR);
-                    ItemStack iron = new ItemStack(Material.IRON_INGOT, (int) (Math.random() * 4) + 1);
-                    blockBroken.getWorld().dropItemNaturally(blockBroken.getLocation(), iron);
-                }
-            } else if (heldItem.getType().equals(Material.DIAMOND_PICKAXE)) {
-                if (heldItem.getItemMeta().hasEnchant(Enchantment.LOOT_BONUS_BLOCKS)) {
-                    e.setDropItems(false);
-                    blockBroken.setType(Material.AIR);
-                    ItemStack iron = new ItemStack(Material.IRON_INGOT, (int) (Math.random() * 4) + 1);
-                    blockBroken.getWorld().dropItemNaturally(blockBroken.getLocation(), iron);
-                }
-            } else if (heldItem.getType().equals(Material.NETHERITE_PICKAXE)) {
-                if (heldItem.getItemMeta().hasEnchant(Enchantment.LOOT_BONUS_BLOCKS)) {
-                    e.setDropItems(false);
-                    blockBroken.setType(Material.AIR);
-                    ItemStack iron = new ItemStack(Material.IRON_INGOT, (int) (Math.random() * 4) + 1);
-                    blockBroken.getWorld().dropItemNaturally(blockBroken.getLocation(), iron);
-                }
-            } else if (heldItem.getType().equals(Material.STONE_PICKAXE)) {
-                if (heldItem.getItemMeta().hasEnchant(Enchantment.LOOT_BONUS_BLOCKS)) {
-                    e.setDropItems(false);
-                    blockBroken.setType(Material.AIR);
-                    ItemStack iron = new ItemStack(Material.IRON_INGOT, (int) (Math.random() * 4) + 1);
-                    blockBroken.getWorld().dropItemNaturally(blockBroken.getLocation(), iron);
+                    ItemStack rubble = new ItemStack(Material.COBBLESTONE, 1);
+                    blockBroken.getWorld().dropItemNaturally(blockBroken.getLocation(), rubble);
                 }
             } else {
-                blockBroken.setType(Material.AIR);
-                ItemStack rubble = new ItemStack(Material.COBBLESTONE, 1);
-                blockBroken.getWorld().dropItemNaturally(blockBroken.getLocation(), rubble);
+                return;
             }
         } else if (blockBroken.getType() == Material.GOLD_ORE) {
             Player playerMining = e.getPlayer();
-            ItemStack heldItem = playerMining.getInventory().getItemInMainHand();
-            if (heldItem.getType().equals(Material.IRON_PICKAXE)) {
-                if (heldItem.getItemMeta().hasEnchant(Enchantment.LOOT_BONUS_BLOCKS)) {
-                    e.setDropItems(false);
+            if (playerMining.hasPermission("fortuned.mine.gold")) {
+                ItemStack heldItem = playerMining.getInventory().getItemInMainHand();
+                if (heldItem.getType().equals(Material.IRON_PICKAXE)) {
+                    if (heldItem.getItemMeta().hasEnchant(Enchantment.LOOT_BONUS_BLOCKS)) {
+                        e.setDropItems(false);
+                        blockBroken.setType(Material.AIR);
+                        ItemStack gold = new ItemStack(Material.GOLD_INGOT, (int) (Math.random() * 4) + 1);
+                        blockBroken.getWorld().dropItemNaturally(blockBroken.getLocation(), gold);
+                    }
+                } else if (heldItem.getType().equals(Material.DIAMOND_PICKAXE)) {
+                    if (heldItem.getItemMeta().hasEnchant(Enchantment.LOOT_BONUS_BLOCKS)) {
+                        e.setDropItems(false);
+                        blockBroken.setType(Material.AIR);
+                        ItemStack gold = new ItemStack(Material.GOLD_INGOT, (int) (Math.random() * 4) + 1);
+                        blockBroken.getWorld().dropItemNaturally(blockBroken.getLocation(), gold);
+                    }
+                } else if (heldItem.getType().equals(Material.NETHERITE_PICKAXE)) {
+                    if (heldItem.getItemMeta().hasEnchant(Enchantment.LOOT_BONUS_BLOCKS)) {
+                        e.setDropItems(false);
+                        blockBroken.setType(Material.AIR);
+                        ItemStack gold = new ItemStack(Material.GOLD_INGOT, (int) (Math.random() * 4) + 1);
+                        blockBroken.getWorld().dropItemNaturally(blockBroken.getLocation(), gold);
+                    }
+                } else {
                     blockBroken.setType(Material.AIR);
-                    ItemStack gold = new ItemStack(Material.GOLD_INGOT, (int) (Math.random() * 4) + 1);
-                    blockBroken.getWorld().dropItemNaturally(blockBroken.getLocation(), gold);
-                }
-            } else if (heldItem.getType().equals(Material.DIAMOND_PICKAXE)) {
-                if (heldItem.getItemMeta().hasEnchant(Enchantment.LOOT_BONUS_BLOCKS)) {
-                    e.setDropItems(false);
-                    blockBroken.setType(Material.AIR);
-                    ItemStack gold = new ItemStack(Material.GOLD_INGOT, (int) (Math.random() * 4) + 1);
-                    blockBroken.getWorld().dropItemNaturally(blockBroken.getLocation(), gold);
-                }
-            } else if (heldItem.getType().equals(Material.NETHERITE_PICKAXE)) {
-                if (heldItem.getItemMeta().hasEnchant(Enchantment.LOOT_BONUS_BLOCKS)) {
-                    e.setDropItems(false);
-                    blockBroken.setType(Material.AIR);
-                    ItemStack gold = new ItemStack(Material.GOLD_INGOT, (int) (Math.random() * 4) + 1);
-                    blockBroken.getWorld().dropItemNaturally(blockBroken.getLocation(), gold);
+                    ItemStack rubble = new ItemStack(Material.COBBLESTONE, 1);
+                    blockBroken.getWorld().dropItemNaturally(blockBroken.getLocation(), rubble);
                 }
             } else {
-                blockBroken.setType(Material.AIR);
-                ItemStack rubble = new ItemStack(Material.COBBLESTONE, 1);
-                blockBroken.getWorld().dropItemNaturally(blockBroken.getLocation(), rubble);
+                return;
             }
         }
     }
