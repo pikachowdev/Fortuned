@@ -13,5 +13,7 @@ Installation -
 5) Enjoy!
 
 Permissions -
+
 fortuned.mine.gold - Allows fortune pickaxes to be used on gold
+
 fortuned.mine.iron - Allows fortune pickaxes to be used on iron
